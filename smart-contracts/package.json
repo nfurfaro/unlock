@@ -37,11 +37,13 @@
   },
   "scripts": {
     "remix": "remixd -s contracts --remix-ide http://localhost:8080 --read-only",
-    "test": "truffle test --network test",
+    "cleanup-dev": "rm -rf ../smart-contracts/zos.dev-1984.json",
+    "test": "npm run cleanup-dev && truffle test --network test",
     "lint": "solhint contracts/**/*.sol",
     "ci": "npm run lint && npm run test",
     "build": "truffle compile --reset",
-    "deploy": "truffle deploy",
+    "push-dev": "zos push --reset --network development --from 0xe29ec42f0b620b1c9a716f79a02e9dc5a5f5f98a && npm run migrate",
+    "migrate": "truffle migrate",
     "zos": "zos"
   },
   "author": "",

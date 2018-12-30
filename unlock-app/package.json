@@ -75,6 +75,7 @@
   },
   "engineStrict": true,
   "scripts": {
+    "clear-8545": "lsof -t -i tcp:8545 | xargs kill",
     "dev": "npm run build-paywall && npm run setup-dev && npm run set-link && nodemon src/server.js",
     "set-link": "run-script-os",
     "set-link:darwin:freebsd:linux:sunos": "cd src && (test -e artifacts && rm -f artifacts) && ln -s ../../smart-contracts/build artifacts",
@@ -85,7 +86,7 @@
     "start": "NODE_ENV=production node src/server.js",
     "setup-dev": "run-script-os",
     "setup-dev:darwin:freebsd:linux:sunos": "cd .. && (npm run start-ganache -- -b 3 &) && npm run deploy-lock",
-    "setup-dev:win32": "cd .. && (START /b npm run start-ganache -- -b 3 ) && npm run deploy-lock",
+    "setup-dev:win32": "cd .. && (START /b npm run start-ganache -- -b 3 ) && npm run deploy-dev-lock",
     "test": "UNLOCK_ENV=test jest --env=jsdom",
     "lint": "eslint .",
     "reformat": "prettier-eslint \"src/**/*.js\" --write",
