@@ -37,8 +37,7 @@
   },
   "scripts": {
     "remix": "remixd -s contracts --remix-ide http://localhost:8080 --read-only",
-    "cleanup-dev": "rm -rf ../smart-contracts/zos.dev-1984.json",
-    "test": "npm run cleanup-dev && truffle test --network test",
+    "test": "truffle test --network test",
     "lint": "solhint contracts/**/*.sol",
     "ci": "npm run lint && npm run test",
     "build": "truffle compile --reset",
